@@ -1,12 +1,13 @@
 package org.personal.codility;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class Main {
 
     public static void main(String[] args) {
-	    CyclicRotation cycleTwo = new CyclicRotation();
-        System.out.println(Arrays.toString(cycleTwo.solution(new int[] {1, 2, 3, 4, 5}, 2)));
+	    OddOccurrencesInArray execute = new OddOccurrencesInArray();
+        System.out.println(execute.solution(new int[] {3, 9, 3, 7, 9, 7, 0, 1 ,0, 1, 2}));
     }
 }
 
@@ -52,5 +53,15 @@ class CyclicRotation {
 }
 
 class OddOccurrencesInArray {
-
+    int solution(int[] A) {
+        HashSet<Integer> hs = new HashSet<>();
+        for (int i=0; i<A.length; i++) {
+            if (hs.contains(A[i])) {
+                hs.remove(A[i]);
+            } else {
+                hs.add(A[i]);
+            }
+        }
+        return hs.iterator().next();
+    }
 }
